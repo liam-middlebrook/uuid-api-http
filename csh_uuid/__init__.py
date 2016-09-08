@@ -1,6 +1,9 @@
 import random
 import requests
 
+from uuid import uuid5
+from uuid import NAMESPACE_OID
+
 from flask import Flask
 
 from csh_uuid.ldap import ldap_init
@@ -21,7 +24,7 @@ def uid_to_uuid(uid):
     uuid = get_uuid(app, uid)
 
     if uuid is None:
-        return random.choice(WORDS).lower()
+        return str(uuid5(NAMESPACE_OID, uid))
     return uuid
 
 
