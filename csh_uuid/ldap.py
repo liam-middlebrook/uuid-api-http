@@ -4,6 +4,7 @@ from ldap.ldapobject import ReconnectLDAPObject
 
 ldap_conn = None
 
+
 def ldap_init(app):
     app.config['LDAP_CONN'] = ReconnectLDAPObject(app.config['LDAP_URL'])
     app.config['LDAP_CONN'].simple_bind_s(
